@@ -1,5 +1,9 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:secure_notes_app/view/widget/custom_appbar.dart';
+import 'package:secure_notes_app/view/widget/custom_elevated_button.dart';
+import 'package:secure_notes_app/view/widget/custom_text_field.dart';
 import 'package:secure_notes_app/view_model/auth_view_model.dart';
 import 'package:provider/provider.dart';
 
@@ -37,26 +41,24 @@ class _PinSetupScreenState extends State<PinSetupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Pin Setup'),),
+      appBar: CustomAppBar(title: 'Create PIN', centerTitle: true,),
       body: Padding(
         padding: EdgeInsets.all(16),
         child: Column(
           children: [
-            TextField(
+             CustomTextField(
               controller: _pinController,
-              decoration: InputDecoration(
-                labelText: 'Enter Pin',
-                errorText: _erroeMessage,
-              ),
-              keyboardType: TextInputType.number,
-              maxLength: 4,
+              showBorder: true,
               obscureText: true,
-            ),
+              keyboardType: TextInputType.number,
+              labelText: 'Enter Pin',
+              errorText: _erroeMessage,
+              maxLength: 4,
+              autofocus: true,
+              ),
+            
             SizedBox(height: 16,),
-            ElevatedButton(
-              onPressed: _setupPin, 
-              child: Text('Set PIN'))
+            CustomElevatedButton(text: 'Create PIN', onPressed: _setupPin)
           ],
         ),),
 

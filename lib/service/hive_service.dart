@@ -4,6 +4,8 @@ import 'package:secure_notes_app/model/note_model.dart';
 class HiveService{
   static const String _boxName = 'notes';
 
+  /// Initializes Hive by calling [Hive.initFlutter] and opening the "notes"
+  /// box. This must be called before any other methods on this class.
   Future<void> init()async{
     await Hive.initFlutter();
     await Hive.openBox(_boxName);

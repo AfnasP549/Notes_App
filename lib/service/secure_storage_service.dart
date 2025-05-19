@@ -4,6 +4,10 @@ class SecureStorageService {
   final _storage = const FlutterSecureStorage();
   static const String _pinkey = 'user_pin';
 
+  /// Save user's pin in secure storage
+  /// This will be used to verify user's pin when tries to login
+  /// [pin] the user's pin to be saved
+ 
   Future<void> savePin(String pin) async {
     await _storage.write(key: _pinkey, value: pin, aOptions: _getAndroidOptions());
   }

@@ -1,4 +1,3 @@
-// lib/view/widget/custom_app_bar.dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:secure_notes_app/view_model/theme_view_model.dart';
@@ -6,11 +5,13 @@ import 'package:secure_notes_app/view_model/theme_view_model.dart';
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final bool showDarkModeToggle;
+  final bool centerTitle; 
 
   const CustomAppBar({
     super.key,
     required this.title,
     this.showDarkModeToggle = false,
+    this.centerTitle = false, 
   });
 
   @override
@@ -21,6 +22,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       automaticallyImplyLeading: false,
       title: Text(title),
+      centerTitle: centerTitle,  
       actions: showDarkModeToggle
           ? [
               Consumer<ThemeViewModel>(

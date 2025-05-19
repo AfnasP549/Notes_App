@@ -6,6 +6,7 @@ import 'package:secure_notes_app/view/notes_edit_screen.dart';
 import 'package:secure_notes_app/view/notes_list_screen.dart';
 import 'package:secure_notes_app/view/pin_login_screen.dart';
 import 'package:secure_notes_app/view/pin_setup_screen.dart';
+import 'package:secure_notes_app/view/splash_screen.dart';
 import 'package:secure_notes_app/view_model/auth_view_model.dart';
 import 'package:secure_notes_app/view_model/note_view_mode.dart';
 import 'package:secure_notes_app/view_model/theme_view_model.dart';
@@ -36,9 +37,10 @@ class MyApp extends StatelessWidget {
           
           title: 'Secure Notes',
           theme: themeViewModel.theme,
-          initialRoute: '/',
+          initialRoute: '/splash',
           routes: {
-            '/': (context) => const AuthCheck(),
+            '/splash': (context) => const SplashScreen(),
+            '/AuthCheck': (context) => const AuthCheck(),
             '/PinSetupScreen': (context) => const PinSetupScreen(),
             '/PinLoginScreen': (context) => const PinLoginScreen(),
             '/NotesListScreen': (context) => const NotesListScreen(),

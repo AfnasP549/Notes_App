@@ -8,11 +8,16 @@ class NoteViewModel extends ChangeNotifier{
 
   List<NoteModel> get notes => _notes;
 
+  /// Initializes the notes list by fetching the notes from the database and
+  /// notifies the listeners. This must be called before any other methods on this class.
   Future<void> init()async{
     _notes = await _hiveService.getNotes();
     notifyListeners();
   }
 
+  /// Fetches the notes from the database and notifies the listeners.
+  /// This is a utility method that can be used to update the notes list
+  /// without having to call [init] again.
   Future<void>fetchNotes()async{
     _notes = await _hiveService.getNotes();
     notifyListeners();

@@ -21,6 +21,11 @@ class ThemeViewModel extends ChangeNotifier{
   );
 
 
+  /// Toggle the theme between light and dark mode.
+  /// When called, the current value of [_isDarkMode] is inverted and a
+  /// notification is sent to any listeners of this object.
+  /// This typically causes the Flutter framework to rebuild the application
+  /// with the new theme.
   void toggleTheme() {
     _isDarkMode = !_isDarkMode;
     notifyListeners();

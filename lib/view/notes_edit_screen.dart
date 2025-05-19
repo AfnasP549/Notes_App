@@ -20,9 +20,15 @@ class _NotesEditScreenState extends State<NotesEditScreen> {
 
 
   @override
+  /// This method is called when the dependencies of the widget change.
+  /// It initializes the note from the route arguments if it's not already set.
+  /// If a note is provided, it populates the title and content controllers
+  /// with the note's data. This ensures that the edit screen displays the
+  /// correct information when editing an existing note.
+
 void didChangeDependencies() {
   super.didChangeDependencies();
-  if (_note == null) { // Only run once
+  if (_note == null) {
     _note = ModalRoute.of(context)?.settings.arguments as NoteModel?;
     if (_note != null) {
       _titleController.text = _note!.title;
@@ -51,6 +57,8 @@ void didChangeDependencies() {
   }
 
   @override
+  /// Releases resources used by the text editing controllers.
+  /// This method is called when the widget is removed from the tree. It
   void dispose() {
     _contentController.dispose();
     _titleController.dispose();
@@ -76,31 +84,12 @@ void didChangeDependencies() {
                 errorText: _errorMessage,
                 isTitleField: true,
                 ),
-              // TextField(
-              //   controller: _titleController,style: TextStyle(fontSize: 34),
-              //   decoration: InputDecoration(
-              //     hintText: 'Title',
-              //     hintStyle: TextStyle(fontSize: 34),
-              //     errorText: _errorMessage,
-              //     border: InputBorder.none
-              //   ),
-              // ),
               const SizedBox(height: 16),
               //!Content field
               CustomTextField(
                 controller: _contentController,
                 hintText: 'Content',
                 maxLines: 30,),
-              // TextField(
-              //   controller: _contentController,
-              //   decoration: const InputDecoration(
-              //     hintText: 'Content',
-              //     border: InputBorder.none,
-              //     alignLabelWithHint: true
-              //     ),
-              //     maxLines: 30
-              //   //keyboardType: TextInputType.multiline,
-              // ),
               const SizedBox(height: 16),
               //!Button
               CustomElevatedButton(text: 'Save', onPressed: _saveNote,),
